@@ -1,0 +1,290 @@
+:root {
+  /* Primary */
+  --pdesaturated-red: hsl(0, 36%, 70%);
+  --psoft-red: hsl(0, 93%, 68%);
+
+  /* Neutral */
+  --ndark-grayish-red: hsl(0, 6%, 24%);
+
+  /* Gradient */
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(0, 0%, 100%),
+    hsl(0, 100%, 98%)
+  );
+  --gradient-secondary: linear-gradient(
+    135deg,
+    hsl(0, 80%, 86%),
+    hsl(0, 74%, 74%)
+  );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+  width: 100%;
+  min-height: 100dvh;
+  font-weight: 400;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  color: var(--ndark-grayish-red);
+}
+
+header,
+main section,
+footer {
+  width: 100%;
+  min-width: 280px;
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+header {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+header img {
+  width: 120px;
+}
+
+main {
+  flex: 1;
+}
+
+main figure img {
+  width: 100%;
+}
+
+main section {
+  margin: 2em auto 5em auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+main section header {
+  display: none;
+}
+
+main section h1 {
+  font-size: 2.7em;
+  text-align: center;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+}
+
+section h1 span {
+  font-weight: 600;
+  letter-spacing: 8px;
+}
+
+section h1 span:first-child {
+  font-weight: 300;
+  color: var(--pdesaturated-red);
+}
+
+section p {
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.5em;
+  font-weight: 600;
+  color: var(--pdesaturated-red);
+}
+
+section form {
+  position: relative;
+}
+
+section form input {
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 0 7em 0 2em;
+  font-size: 0.9em;
+  border: 2px solid var(--pdesaturated-red);
+  border-radius: 100px;
+  outline: none;
+}
+
+section form.error input {
+  border-color: var(--psoft-red);
+}
+
+section form input::placeholder {
+  color: var(--pdesaturated-red);
+}
+
+section form.error input::placeholder {
+  border-color: var(--psoft-red);
+}
+
+section form div.icon-error {
+  position: absolute;
+  height: 50px;
+  top: 0;
+  right: 68px;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+}
+
+section form.error div.icon-error {
+  opacity: 1;
+}
+
+section form button {
+  width: 60px;
+  height: 50px;
+  background-image: var(--gradient-secondary);
+  border: none;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: hsl(0, 36%, 70%) 0px 20px 30px -10px;
+}
+
+form button img {
+  position: absolute;
+}
+
+form button img:first-child {
+  transform: translateX(0%);
+  transition: all 0.3s ease-in-out;
+}
+
+form button img:last-child {
+  transform: translateX(-500%);
+  transition: all 0.3s ease-in-out;
+}
+
+form button:hover img:first-child {
+  transform: translateX(500%);
+}
+
+form button:hover img:last-child {
+  transform: translateX(0%);
+}
+
+section form p#email-message {
+  margin: 0.3em 2em;
+  text-align: left;
+  font-size: 0.8rem;
+}
+
+section form.error p#email-message {
+  color: var(--psoft-red);
+}
+
+section form.success p#email-message {
+  color: green;
+}
+
+footer p {
+  text-align: center;
+  color: var(--ndark-grayish-red);
+}
+
+footer p a {
+  color: var(--pdesaturated-red);
+}
+
+@media (min-width: 600px) {
+  header,
+  main section,
+  footer {
+    max-width: 440px;
+  }
+
+  main figure {
+    max-width: 500px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  main figure img {
+    object-position: top;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    overflow: hidden;
+  }
+
+  header {
+    display: none;
+  }
+
+  main {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 4em;
+  }
+
+  main figure {
+    width: 100%;
+    max-width: fit-content;
+    height: 100vh;
+    margin: 0;
+    aspect-ratio: unset;
+    border-radius: 0px;
+  }
+
+  main figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  main section {
+    margin: 0 auto;
+  }
+
+  main section header {
+    display: block;
+  }
+
+  section header img {
+    width: 160px;
+  }
+
+  main section h1 {
+    margin-top: 1em;
+    text-align: left;
+    font-size: 3.5rem;
+  }
+
+  main section p {
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
+  main section footer {
+    margin-top: 1em;
+    display: block;
+  }
+
+  footer {
+    display: none;
+  }
+}
