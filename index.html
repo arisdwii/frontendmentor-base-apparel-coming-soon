@@ -20,7 +20,7 @@
 
 <body>
   <!-- show in width < 786px -->
-  <header>
+  <header class="header-mobile">
     <a href="/" aria-label="go to home">
       <img src="images/logo.svg" alt="Logo Base Apparel">
     </a>
@@ -35,39 +35,42 @@
       </picture>
     </figure>
 
-    <section>
+    <section class="container">
       <!-- show in width > 786 -->
-      <header>
+      <header class="header-desktop">
         <a href="/" aria-label="go to home">
           <img src="images/logo.svg" alt="Logo Base Apparel">
         </a>
       </header>
 
-      <h1>
-        <span>We're</span>
-        <span>coming soon</span>
-      </h1>
+      <section class="content">
+        <h1>
+          <span>We're</span>
+          <span>coming soon</span>
+        </h1>
 
-      <p>Hello fellow shoppers! We're currently building our new fashion store. Add your email below to stay up-to-date
-        with announcements and our launch deals.</p>
+        <p>Hello fellow shoppers! We're currently building our new fashion store. Add your email below to stay
+          up-to-date
+          with announcements and our launch deals.</p>
 
-      <form>
-        <input type="email" name="email" id="email" placeholder="Email Address" aria-describedby="error-message">
+        <form>
+          <input type="email" name="email" id="email" placeholder="Email Address" aria-describedby="error-message">
 
-        <div class="icon-error" role="alert">
-          <img src="images/icon-error.svg" alt="icon error" draggable="false">
-        </div>
+          <div class="icon-error" role="alert">
+            <img src="images/icon-error.svg" alt="icon error" draggable="false">
+          </div>
 
-        <button type="submit">
-          <img src="images/icon-arrow.svg" alt="" draggable="false">
-          <img src="images/icon-arrow.svg" alt="" draggable="false">
-        </button>
+          <button type="submit">
+            <img src="images/icon-arrow.svg" alt="" draggable="false">
+            <img src="images/icon-arrow.svg" alt="" draggable="false">
+          </button>
 
-        <p id="email-message"></p>
-      </form>
+          <p id="email-message"></p>
+        </form>
+      </section>
 
       <!-- show in width > 786px -->
-      <footer>
+      <footer class="footer-desktop">
         <p>
           Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
             aria-label="go to website frontendmentor">Frontend Mentor</a>.
@@ -78,7 +81,7 @@
   </main>
 
   <!-- show in width < 786px -->
-  <footer>
+  <footer class="footer-mobile">
     <p>
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
         aria-label="go to website frontendmentor">Frontend Mentor</a>.

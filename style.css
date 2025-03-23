@@ -33,12 +33,13 @@ body {
   font-size: 1rem;
   display: flex;
   flex-direction: column;
+  background-image: var(--gradient-primary);
   color: var(--ndark-grayish-red);
 }
 
-header,
-main section,
-footer {
+header.header-mobile,
+main section.content,
+footer.footer-mobile {
   width: 100%;
   min-width: 280px;
   max-width: 375px;
@@ -46,13 +47,13 @@ footer {
   padding: 1em;
 }
 
-header {
+header.header-mobile {
   min-height: 60px;
   display: flex;
   align-items: center;
 }
 
-header img {
+header.header-mobile img {
   width: 120px;
 }
 
@@ -64,18 +65,18 @@ main figure img {
   width: 100%;
 }
 
-main section {
-  margin: 2em auto 5em auto;
+main header.header-desktop {
+  display: none;
+}
+
+main section.content {
+  margin: 1.5em auto 5em auto;
   display: flex;
   flex-direction: column;
   gap: 1.5em;
 }
 
-main section header {
-  display: none;
-}
-
-main section h1 {
+main section.content h1 {
   font-size: 2.7em;
   text-align: center;
   text-transform: uppercase;
@@ -83,17 +84,17 @@ main section h1 {
   flex-direction: column;
 }
 
-section h1 span {
+section.content h1 span {
   font-weight: 600;
   letter-spacing: 8px;
 }
 
-section h1 span:first-child {
+section.content h1 span:first-child {
   font-weight: 300;
   color: var(--pdesaturated-red);
 }
 
-section p {
+section.content p {
   text-align: center;
   font-size: 1rem;
   line-height: 1.5em;
@@ -101,11 +102,11 @@ section p {
   color: var(--pdesaturated-red);
 }
 
-section form {
+section.content form {
   position: relative;
 }
 
-section form input {
+section.content form input {
   display: block;
   width: 100%;
   height: 50px;
@@ -116,34 +117,36 @@ section form input {
   outline: none;
 }
 
-section form.error input {
-  border-color: var(--psoft-red);
-}
-
-section form input::placeholder {
+section.content form input::placeholder {
   color: var(--pdesaturated-red);
 }
 
-section form.error input::placeholder {
+section.content form.error input,
+section.content form.error input::placeholder {
   border-color: var(--psoft-red);
+  color: var(--psoft-red);
 }
 
-section form div.icon-error {
-  position: absolute;
+section.content form div.icon-error {
   height: 50px;
+  position: absolute;
   top: 0;
   right: 68px;
   display: flex;
   align-items: center;
-  opacity: 0;
   pointer-events: none;
+  transition: all 0.3s ease-in-out;
 }
 
-section form.error div.icon-error {
-  opacity: 1;
+form div.icon-error img {
+  display: none;
 }
 
-section form button {
+form.error div.icon-error img {
+  display: block;
+}
+
+section.content form button {
   width: 60px;
   height: 50px;
   background-image: var(--gradient-secondary);
@@ -169,31 +172,35 @@ form button img:first-child {
   transition: all 0.3s ease-in-out;
 }
 
+form button:hover img:first-child {
+  transform: translateX(500%);
+}
+
 form button img:last-child {
   transform: translateX(-500%);
   transition: all 0.3s ease-in-out;
-}
-
-form button:hover img:first-child {
-  transform: translateX(500%);
 }
 
 form button:hover img:last-child {
   transform: translateX(0%);
 }
 
-section form p#email-message {
+section.content form p#email-message {
   margin: 0.3em 2em;
   text-align: left;
   font-size: 0.8rem;
 }
 
-section form.error p#email-message {
+section.content form.error p#email-message {
   color: var(--psoft-red);
 }
 
-section form.success p#email-message {
+section.content form.success p#email-message {
   color: green;
+}
+
+main footer.footer-desktop {
+  display: none;
 }
 
 footer p {
@@ -206,13 +213,14 @@ footer p a {
 }
 
 @media (min-width: 600px) {
-  header,
-  main section,
-  footer {
+  header.header-mobile,
+  main section.content,
+  footer.footer-mobile {
     max-width: 440px;
   }
 
   main figure {
+    width: 100%;
     max-width: 500px;
     margin: 0 auto;
     aspect-ratio: 16 / 9;
@@ -223,14 +231,18 @@ footer p a {
   main figure img {
     object-position: top;
   }
+
+  main section.content {
+    gap: 2em;
+  }
 }
 
 @media (min-width: 768px) {
   body {
-    overflow: hidden;
+    background-image: none;
   }
 
-  header {
+  header.header-mobile {
     display: none;
   }
 
@@ -238,12 +250,10 @@ footer p a {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    gap: 4em;
   }
 
   main figure {
-    width: 100%;
-    max-width: fit-content;
+    max-width: max-content;
     height: 100vh;
     margin: 0;
     aspect-ratio: unset;
@@ -251,40 +261,67 @@ footer p a {
   }
 
   main figure img {
-    width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  main section {
+  main section.container {
+    width: 100%;
+    height: 100vh;
+    background-image: url("images/bg-pattern-desktop.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top right;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  main header.header-desktop,
+  main footer.footer-desktop {
+    width: 100%;
+    max-width: 440px;
     margin: 0 auto;
   }
 
-  main section header {
+  main header.header-desktop {
     display: block;
+    height: 80px;
+    display: flex;
+    align-items: end;
   }
 
-  section header img {
-    width: 160px;
+  header.header-desktop img {
+    width: 140px;
   }
 
-  main section h1 {
+  main section.content {
+    margin: 0 auto;
+    flex: 1;
+    padding: 1em 2em 1em 0;
+  }
+
+  main section.content h1 {
     margin-top: 1em;
     text-align: left;
     font-size: 3.5rem;
   }
 
-  main section p {
+  main section.content p {
     text-align: left;
     font-size: 0.9rem;
   }
 
-  main section footer {
-    margin-top: 1em;
+  main footer.footer-desktop {
     display: block;
+    padding: 1em 0;
   }
 
-  footer {
+  main footer.footer-desktop p {
+    text-align: left;
+  }
+
+  footer.footer-mobile {
     display: none;
   }
 }
